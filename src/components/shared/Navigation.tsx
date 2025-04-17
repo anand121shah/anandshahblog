@@ -44,7 +44,7 @@ export default function Navigation() {
               >
                 <Link href="/" className="flex flex-shrink-0 items-center group">
                   <motion.span 
-                    className={`text-2xl font-bold bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent transition-all duration-300 ${
+                    className={`text-2xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-300 ${
                       scrolled ? 'scale-90' : 'scale-100'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -72,7 +72,7 @@ export default function Navigation() {
                       </span>
                       {isActive && (
                         <motion.div
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gray-300 to-white"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
                           layoutId="navigation-underline"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
@@ -113,7 +113,7 @@ export default function Navigation() {
                         href={item.href}
                         className={`block py-2 pl-3 pr-4 text-base font-medium transition-colors duration-200 ${
                           isActive
-                            ? 'text-white bg-indigo-900'
+                            ? 'text-white bg-gradient-to-r from-indigo-900 to-purple-900'
                             : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                         }`}
                       >
