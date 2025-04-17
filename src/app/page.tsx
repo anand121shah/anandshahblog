@@ -32,7 +32,7 @@ export default function Home() {
               href="/clicks"
               className="border border-gray-700 hover:bg-gray-800 text-gray-300 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center"
             >
-              View My Work →
+              View My Favorite Clicks →
             </Link>
           </div>
         </motion.div>
