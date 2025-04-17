@@ -43,15 +43,33 @@ export default function ParticleBackground() {
         this.size = Math.random() * 2.5 + 0.5
         this.speedX = Math.random() * 1 - 0.5
         this.speedY = Math.random() * 1 - 0.5
-        this.color = 'rgba(173, 216, 230, 0.6)'
+        this.color = `rgba(173, 216, 230, ${Math.random() * 0.4 + 0.2})`
       }
 
       update() {
+        const dx = mouse.x - this.x
+        const dy = mouse.y - this.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        
+        if (distance < 200) {
+          const force = (200 - distance) / 10000
+          this.speedX += (dx * force)
+          this.speedY += (dy * force)
+        }
+
+        this.speedX += (Math.random() - 0.5) * 0.01
+        this.speedY += (Math.random() - 0.5) * 0.01
+
+        this.speedX = Math.max(Math.min(this.speedX, 2), -2)
+        this.speedY = Math.max(Math.min(this.speedY, 2), -2)
+
         this.x += this.speedX
         this.y += this.speedY
 
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -1
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -1
+        if (this.x > canvas.width) this.x = 0
+        if (this.x < 0) this.x = canvas.width
+        if (this.y > canvas.height) this.y = 0
+        if (this.y < 0) this.y = canvas.height
       }
 
       draw() {
@@ -83,8 +101,17 @@ export default function ParticleBackground() {
 
           if (distance < 120) {
             const opacity = (1 - distance / 120) * 0.4
+            const gradient = ctx.createLinearGradient(
+              particles[i].x,
+              particles[i].y,
+              particles[j].x,
+              particles[j].y
+            )
+            gradient.addColorStop(0, `rgba(173, 216, 230, ${opacity})`)
+            gradient.addColorStop(1, `rgba(147, 197, 253, ${opacity})`)
+            
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(173, 216, 230, ${opacity})`
+            ctx.strokeStyle = gradient
             ctx.lineWidth = 0.5
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
@@ -98,8 +125,17 @@ export default function ParticleBackground() {
 
         if (distanceMouse < 180) {
           const opacity = (1 - distanceMouse / 180) * 0.6
+          const gradient = ctx.createLinearGradient(
+            particles[i].x,
+            particles[i].y,
+            mouse.x,
+            mouse.y
+          )
+          gradient.addColorStop(0, `rgba(200, 220, 255, ${opacity})`)
+          gradient.addColorStop(1, `rgba(167, 139, 250, ${opacity})`)
+          
           ctx.beginPath()
-          ctx.strokeStyle = `rgba(200, 220, 255, ${opacity})`
+          ctx.strokeStyle = gradient
           ctx.lineWidth = 0.8
           ctx.moveTo(particles[i].x, particles[i].y)
           ctx.lineTo(mouse.x, mouse.y)
