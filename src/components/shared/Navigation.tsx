@@ -28,7 +28,7 @@ const navigation = [
     group: 'content'
   },
   { 
-    name: 'About', 
+    name: 'About My Skills', 
     href: '/about', 
     icon: FaUserAlt,
     group: 'primary'

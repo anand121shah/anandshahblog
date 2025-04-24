@@ -26,7 +26,13 @@ export default function Home() {
               href="/about"
               className="bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 shadow-lg"
             >
-              About Me
+              About My Skills
+            </Link>
+            <Link 
+              href="/blog"
+              className="bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 shadow-lg"
+            >
+              Read My Blogs
             </Link>
             <Link 
               href="/clicks"

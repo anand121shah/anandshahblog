@@ -4,11 +4,11 @@ import { motion } from 'framer-motion'
 import Navigation from '@/components/shared/Navigation'
 import { 
   FaPython, FaDatabase, FaChartLine, FaRobot, 
-  FaCamera, FaCode, FaCloud, FaBrain,
-  FaLanguage, FaGlobe, FaTools, FaServer,
+  FaCamera, FaBrain,
+  FaLanguage, FaGlobe, FaTools,
   FaChartBar, FaNetworkWired, FaChartPie
 } from 'react-icons/fa'
-import { SiTensorflow, SiPytorch, SiScikitlearn, SiApachespark, SiTableau, SiPowerbi } from 'react-icons/si'
+import { SiTensorflow, SiPytorch, SiScikitlearn, SiTableau, SiPowerbi } from 'react-icons/si'
 
 const skills = [
   { 
@@ -28,18 +28,6 @@ const skills = [
     category: 'Data',
     icon: FaDatabase,
     description: 'ETL, Data Pipelines, Data Warehousing, Snowflake, PostgreSQL'
-  },
-  { 
-    name: 'Big Data', 
-    category: 'Data Science',
-    icon: SiApachespark,
-    description: 'Spark, Hadoop, Distributed Computing, Data Processing'
-  },
-  { 
-    name: 'Cloud Computing', 
-    category: 'Infrastructure',
-    icon: FaCloud,
-    description: 'AWS, Azure, GCP, Serverless, Kubernetes'
   },
   { 
     name: 'Data Visualization', 
@@ -76,12 +64,6 @@ const skills = [
     category: 'Creative',
     icon: FaCamera,
     description: 'Portrait, Landscape, Street Photography'
-  },
-  { 
-    name: 'System Design', 
-    category: 'Architecture',
-    icon: FaServer,
-    description: 'Scalable Systems, Microservices, Production ML Deployment'
   }
 ]
 
@@ -124,7 +106,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-8">
-              About Me
+              About My Skills
             </h1>
             
             <div className="prose prose-lg dark:prose-invert max-w-none">

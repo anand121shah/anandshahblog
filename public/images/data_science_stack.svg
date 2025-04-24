@@ -1,0 +1,20 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+  <g transform="translate(400,200)">
+    <text x="-150" y="0" font-family="Arial" font-size="24" fill="#333">
+      Data Science Stack
+    </text>
+    <rect x="-100" y="20" width="200" height="40" fill="#4a90e2" rx="5"/>
+    <text x="-50" y="45" font-family="Arial" font-size="16" fill="white">
+      Statistics
+    </text>
+    <rect x="-100" y="70" width="200" height="40" fill="#50c878" rx="5"/>
+    <text x="-65" y="95" font-family="Arial" font-size="16" fill="white">
+      Machine Learning
+    </text>
+    <rect x="-100" y="120" width="200" height="40" fill="#f39c12" rx="5"/>
+    <text x="-40" y="145" font-family="Arial" font-size="16" fill="white">
+      Python/R
+    </text>
+  </g>
+</svg> 

@@ -1,48 +1,16 @@
-'use client'
-
+import { use } from 'react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/shared/Navigation'
 import { getPostBySlug } from '@/lib/mdx'
-import { useEffect, useState } from 'react'
-import type { BlogPost } from '@/lib/mdx'
+import MDXComponents from '@/components/MDXComponents'
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const [post, setPost] = useState<BlogPost | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const fetchedPost = await getPostBySlug(params.slug)
-      setPost(fetchedPost)
-      setIsLoading(false)
-    }
-    fetchPost()
-  }, [params.slug])
-
-  if (isLoading) {
-    return (
-      <>
-        <Navigation />
-        <div className="relative px-6 pt-24 lg:px-8">
-          <div className="mx-auto max-w-3xl py-12">
-            <div className="animate-pulse">
-              <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
-              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-8"></div>
-              <div className="space-y-3">
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  }
+export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const post = use(getPostBySlug(slug))
 
   if (!post) {
-    notFound()
+    return notFound()
   }
 
   return (
@@ -74,7 +42,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           </div>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} components={MDXComponents} />
           </div>
         </div>
       </article>
